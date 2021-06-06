@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       tableData: [
-        {
+                {
           reportDate: '2016-05-02',
           companyName: 'xxxxxxxxxx有限公司',
           reprotNum: 'EBO20190910001',
