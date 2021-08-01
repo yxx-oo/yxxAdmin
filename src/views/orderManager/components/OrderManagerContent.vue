@@ -64,12 +64,27 @@
           @click="handleDetails(scope.$index, scope.row)"
         >查看详情</el-button>
       </el-table-column>
+      <el-table-column type="expand">
+      <template slot-scope="props">
+        <el-form label-position="left" inline class="demo-table-expand">
+          <el-form-item label="商品名称">
+            <span>{{ 'dddd' }}</span>
+          </el-form-item>
+        </el-form>
+        <el-form label-position="right" inline class="demo-table-expand">
+          <el-form-item label="商品名称">
+            <span>{{ 'dddd' }}</span>
+          </el-form-item>
+        </el-form>
+      </template>
+    </el-table-column>
     </el-table>
   </div>
 </template>
 
 <script>
 // import openWindow from '@/utils/open-window'
+import { orderManagerList } from '@/api/orderManager'
 
 export default {
   name: 'OrderManagerContent',
@@ -83,6 +98,18 @@ export default {
     return {
 
     }
+  },
+  created() {
+    // return new Promise((resolve, reject) => {
+      orderManagerList({}).then(response => {
+        debugger
+        }).catch(error => {
+        // reject(error)
+      })
+    // })
+    // const req = orderManagerList();
+    // console.log(req);
+    debugger;
   },
   methods: {
     handleDetails() {
@@ -98,5 +125,17 @@ export default {
     box-shadow: 0 0 15px 0 rgba(55,63,82,0.19);
     border-radius: 10px;
     padding: 20px;
+    .demo-table-expand {
+      font-size: 0;
+    }
+    .demo-table-expand label {
+      width: 90px;
+      color: #99a9bf;
+    }
+    .demo-table-expand .el-form-item {
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 50%;
+    }
   }
 </style>

@@ -109,6 +109,19 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/orderCreate',
+    component: Layout,
+    redirect: '/orderCreate/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/orderCreate/index'),
+        name: '订单创建',
+        meta: { title: '订单创建', icon: 'list', noCache: true }
+      }
+    ]
+  },
+  {
     path: '/orderManageer',
     component: Layout,
     redirect: '/orderManager/index',

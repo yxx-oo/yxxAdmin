@@ -69,6 +69,19 @@ const constantRoutes = [
         meta: { title: 'Guide', icon: 'guide', noCache: true }
       }
     ]
+  },
+  {
+    path: '/orderManageer',
+    component: 'layout/Layout',
+    redirect: '/orderManager/index',
+    children: [
+      {
+        path: 'index',
+        component: 'views/orderManager/index',
+        name: '订单管理',
+        meta: { title: '订单管理', icon: 'list', noCache: true }
+      }
+    ]
   }
 ]
 

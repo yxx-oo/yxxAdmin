@@ -1,4 +1,4 @@
-[
+const data = [
   {
     "id": "1",
     "certificationProgram": "认证项目",
@@ -406,5 +406,19 @@
         "certificationProgram": "ASTM F963 美国标准"
       }
     ]
+  }
+]
+
+module.exports = [
+  {
+    url: '/order/orderManager',
+    type: 'post',
+    response: config => {
+      debugger
+      return {
+        code: 20000,
+        data: data
+      }
+    }
   }
 ]

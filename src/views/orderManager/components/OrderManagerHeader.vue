@@ -5,9 +5,15 @@
       :options="data"
       :show-all-levels="false"
       filterable
+      :filter-method="dataFilter"
       :props="{ expandTrigger: 'hover', value: 'id', label: 'certificationProgram' }"
-      :filter-method="filterMethod"
+      placeholder="可输入关键字搜索项目"
     >
+    <el-input
+      placeholder="请输入内容"
+      prefix-icon="el-icon-search"
+      v-model="input2">
+    </el-input>
     </el-cascader>
   </div>
 </template>
@@ -20,31 +26,29 @@ export default {
   name: 'OrderManagerHeader',
   data() {
     return {
-      selectValue,
-      data
+      selectValue: '',
+      data: {},
+      input2: ''
     }
   },
-  watch: {
-  },
-  mothods: {
-    filterMethod(val) {
-      this.value = val;
-      if (val) { //val存在
-        this.data = this.optionsCopy.filter((item) => {
-          if (!!~item.label.indexOf(val) || !!~item.label.toUpperCase().indexOf(val.toUpperCase())) {
-            return true
-          }
-        })
-      } else { //val为空时，还原数组
-        // this.data = this.optionsCopy;
-      }
-    }
-  },
+  
   created() {
     this.data = requedata;
+    this.selectValue = '';
   },
-  ethods: {
+  methods: {
+    /* 搜索项目  cascader事件区域*/
+    dataFilter(node, val) {
+      //不区分大小写
+      if (!!~node.text.indexOf(val) || !!~node.text.toUpperCase().indexOf(val.toUpperCase())) {
+        return true
+      }
+    }
+    /* end */
 
+    /* 搜索公司名称  input事件区域*/
+    
+    /* end */
   }
 }
 </script>

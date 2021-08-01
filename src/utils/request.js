@@ -2,6 +2,7 @@ import axios from 'axios'
 import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
+const __ISMOCK__ = process.env.VUE_APP_ISMOCK === "TRUE";
 
 // create an axios instance
 const service = axios.create({
@@ -44,7 +45,6 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000) {
       Message({
